@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Your Table | Gourmet Bistro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?restaurant') no-repeat center center/cover;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      max-width: 500px;
+      margin: 100px auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, select, button {
+      margin-bottom: 15px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #e67e22;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cf711f;
+    }
+
+    @media (max-width: 600px) {
+      .overlay {
+        margin: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Book Your Table</h1>
+    <form action="submit_booking.php" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="date" name="date" required />
+      <input type="time" name="time" required />
+      <select name="guests" required>
+        <option value="">Number of Guests</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5+">5+</option>
+      </select>
+      <button type="submit">Reserve Now</button>
+    </form>
+  </div>
+</body>
+</html>

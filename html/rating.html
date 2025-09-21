@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 20px;
+      background: #f8f8f8;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    /* Review Box */
+    .reviews {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .review {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .review h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .stars {
+      color: #ffcc00;
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .review p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Form */
+    .review-form {
+      background: white;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .review-form input, .review-form textarea, .review-form select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background: #ffcc00;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #e6b800;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Customer Reviews & Ratings</h1>
+
+  <div class="reviews" id="review-list">
+    <div class="review">
+      <h3>Rahul Sharma</h3>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>Amazing food and great service! The pizza was really delicious.</p>
+    </div>
+    <div class="review">
+      <h3>Priya Verma</h3>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p>Lovely ambience and tasty desserts. Will visit again!</p>
+    </div>
+  </div>
+
+  <!-- Review Form -->
+  <div class="review-form">
+    <h2>Leave a Review</h2>
+    <input type="text" id="name" placeholder="Your Name">
+    <select id="rating">
+      <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+      <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+      <option value="3">⭐⭐⭐ (3 Stars)</option>
+      <option value="2">⭐⭐ (2 Stars)</option>
+      <option value="1">⭐ (1 Star)</option>
+    </select>
+    <textarea id="message" rows="4" placeholder="Write your review..."></textarea>
+    <button class="btn" onclick="addReview()">Submit Review</button>
+  </div>
+
+  <script>
+    function addReview() {
+      let name = document.getElementById("name").value;
+      let rating = document.getElementById("rating").value;
+      let message = document.getElementById("message").value;
+
+      if (name && message) {
+        let reviewBox = document.createElement("div");
+        reviewBox.classList.add("review");
+
+        let stars = "⭐".repeat(rating);
+
+        reviewBox.innerHTML = `
+          <h3>${name}</h3>
+          <div class="stars">${stars}</div>
+          <p>${message}</p>
+        `;
+
+        document.getElementById("review-list").appendChild(reviewBox);
+
+        // Clear form
+        document.getElementById("name").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("rating").value = "5";
+      } else {
+        alert("Please fill all fields before submitting!");
+      }
+    }
+  </script>
+
+</body>
+</html>
